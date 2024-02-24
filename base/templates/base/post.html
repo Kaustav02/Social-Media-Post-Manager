@@ -1,0 +1,62 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+
+<div class="header-bar">
+    <div >
+        <h1>Hello {{request.user|title}}</h1>
+        <h3></h3>
+
+    </div>
+
+{% if request.user.is_authenticated %}
+
+<div class='btn'>
+    <a  href="{% url "logout" %}">Logout</a>
+</div>
+
+{% else %}
+<a href="{% url 'login' %}">Login</a>
+{% endif %}
+</div>
+
+
+
+
+
+
+
+<hr>
+<h1>My Posts</h1>
+
+<a href={% url "post_create" %}>Add Task</a>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th></th>
+        <th></th>
+        
+    </tr>
+    {% for post in posts %}
+    <tr>
+        <td>{{ post.title }}</td>
+        <td><a href="{% url 'post_details' post.id %}">View</a></td>
+        <td><a href="{% url 'post_update' post.id %}">Edit</a></td>
+        <td><a href="{% url 'post_delete' post.id %}">Delete</a></td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="2">No posts found.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+
+
+
+
+{% endblock content %}
+

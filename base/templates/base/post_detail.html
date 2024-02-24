@@ -1,0 +1,60 @@
+<style>
+    .post-details {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .post-details h1 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .post-details p {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #666;
+    }
+
+    .likes-shares {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 16px;
+        color: #888;
+    }
+
+    .likes-shares p {
+        margin: 0;
+    }
+
+    .likes-shares p:first-child {
+        margin-right: 20px;
+    }
+
+    .icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+        vertical-align: middle;
+    }
+</style>
+
+<div class="post-details">
+    <h1>Title: {{ post_details.title }}</h1>
+    <p>Description: {{ post_details.description }}</p>
+
+    <div class="likes-shares">
+        <p><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><path fill="#2f88ff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M15 8C8.92487 8 4 12.9249 4 19C4 30 17 40 24 42.3262C31 40 44 30 44 19C44 12.9249 39.0751 8 33 8C29.2797 8 25.9907 9.8469 24 12.6738C22.0093 9.8469 18.7203 8 15 8Z"/></svg>Likes: {{ post_details.like_count }}</p>
+        <p><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><path fill="#2f88ff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M26 4L44 22L26 39V28C12 28 6 43 6 43C6 26 11 15 26 15V4Z"/></svg>Shares: {{ post_details.share_count }}</p>
+    </div>
+
+    <button class='btn'><a href="{%  url "posts" %}">Go Back</a></button>
+    
+</div>

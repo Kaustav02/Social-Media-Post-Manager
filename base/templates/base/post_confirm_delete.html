@@ -1,0 +1,67 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+<style>
+    .delete-form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #fff;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .delete-form a {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: #2f88ff;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    .delete-form a:hover {
+        color: #1d5bbf;
+    }
+
+    .delete-form h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #333;
+        text-align: center;
+    }
+
+    .delete-form form {
+        text-align: center;
+    }
+
+    .delete-form input[type="submit"],
+    .delete-form input[type="button"] {
+        background-color: #ff6b6b;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-right: 10px; /* Added margin between buttons */
+    }
+
+    .delete-form input[type="submit"]:hover,
+    .delete-form input[type="button"]:hover {
+        background-color: #ff4d4d;
+    }
+</style>
+
+<div class="delete-form">
+    
+    <form method="POST" style="display: inline;">
+        {% csrf_token %}
+        <h3>Delete "{{ posts }}"?</h3>
+        <input type="submit" value="Delete">
+        <a href="{% url 'posts' %}" class="btn">Cancel</a> <!-- Added Cancel button -->
+    </form>
+</div>
+{% endblock content %}
